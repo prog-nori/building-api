@@ -1,17 +1,17 @@
 package com.example.building.api.repository;
 
-import com.example.building.api.domain.Building;
+import com.example.building.api.domain.BuildingCoreData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuildingsRepository implements CRUDimpl<Building> {
+public class BuildingsRepository implements CRUDimpl<BuildingCoreData> {
     /**
      * 全件検索
      * @return
      */
-    public List<Building> find() {
+    public List<BuildingCoreData> find() {
         // return all Buildings
-        List<Building> buildings = new ArrayList<>();
+        List<BuildingCoreData> buildings = new ArrayList<>();
         return buildings;
     }
 
@@ -19,30 +19,30 @@ public class BuildingsRepository implements CRUDimpl<Building> {
      * 一見検索
      * @return
      */
-    public Building get(Building target) {
+    public BuildingCoreData get(BuildingCoreData target) {
         // return a Building
-        Building building = new Building();
+        BuildingCoreData building = new BuildingCoreData();
         return building;
     }
 
     /**
      * 追加
      */
-    public void add(Building data) {
+    public void add(BuildingCoreData data) {
         //
     }
 
     /**
      * 更新
      */
-    public void update(Building data) {
+    public void update(BuildingCoreData data) {
         //
     }
 
     /**
      * 論理削除
      */
-    public void delete(Building data) {
+    public void delete(BuildingCoreData data) {
         //
     }
 }
