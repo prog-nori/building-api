@@ -1,13 +1,21 @@
 package com.example.building.api.domain;
 
 import java.sql.Timestamp;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * structureテーブルのデータを表現するためのdomain
  * 構造
  */
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Structure {
     /**
      * ビルID（識別子）

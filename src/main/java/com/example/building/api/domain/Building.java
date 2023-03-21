@@ -2,12 +2,20 @@ package com.example.building.api.domain;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * ビルデータを読み込む際に使用するdomain
  */
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Building {
     /**
      * ビルID（識別子）
