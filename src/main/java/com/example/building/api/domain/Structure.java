@@ -99,4 +99,27 @@ public class Structure {
      * 1...削除
      */
     private int deleteFlag;
+
+    public Structure(
+            int id,
+            int w,
+            int al,
+            int sLight,
+            int sHeavy,
+            int rc,
+            int src,
+            int cft,
+            int cb,
+            String others) {
+        this.setBuildingID(id);
+        this.setW(w);
+        this.setAl(al);
+        this.setSLight(sLight);
+        this.setSHeavy(sHeavy);
+        this.setRc(rc);
+        this.setSrc(src);
+        this.setCft(cft);
+        this.setCb(cb);
+        this.setOthers(others);
+    }
 }

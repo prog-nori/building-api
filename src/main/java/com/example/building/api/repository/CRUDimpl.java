@@ -7,13 +7,21 @@ public interface CRUDimpl<T> {
      * 全件検索
      * @return
      */
-    abstract List<T> find();
+    abstract List<T> selectAll();
 
     /**
-     * 一見検索
+     * id検索
+     * @param id
      * @return
      */
-    abstract T get(T target);
+    abstract List<T> findById(int id);
+
+    /**
+     * 条件検索
+     * @param data
+     * @return
+     */
+    abstract List<T> find(T data);
 
     /**
      * 追加
@@ -28,5 +36,5 @@ public interface CRUDimpl<T> {
     /**
      * 論理削除
      */
-    abstract void delete(T data);
+    abstract void delete(int id);
 }

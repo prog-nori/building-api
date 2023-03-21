@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.trainocamp.demo.mybatis.mapper.UserMapper">
+    <resultMap id="structureMap"
+               type="com.example.building.api.domain.Structure">
+        <result column="BUILDING_ID" jdbcType="INTEGER"       property="buildingID" />
+        <result column="W"           jdbcType="INTEGER"       property="w" />
+        <result column="AL"          jdbcType="INTEGER"       property="al" />
+        <result column="S_LIGHT"     jdbcType="INTEGER"       property="sLight" />
+        <result column="S_HEAVY"     jdbcType="INTEGER"       property="sHeavy" />
+        <result column="RC"          jdbcType="INTEGER"       property="rc" />
+        <result column="SRC"         jdbcType="INTEGER"       property="src" />
+        <result column="CFT"         jdbcType="INTEGER"       property="cft" />
+        <result column="CB"          jdbcType="INTEGER"       property="cb" />
+        <result column="OTHERS"      jdbcType="VARCHAR"       property="others" />
+        <result column="CREATE_AT"   jdbcType="TIMESTAMP"     property="createAt" />
+        <result column="UPDATE_AT"   jdbcType="TIMESTAMP"     property="updateAt" />
+        <result column="DELETE_FLAG" jdbcType="INTEGER"       property="deleteFlag" />
+
+    </resultMap>
+
+    <!--  全件検索  -->
+    <select id="selectAll" resultMap="structureMap">
+        SELECT (
+            BUILDING_ID,
+            W,
+            AL,
+            S_LIGHT,
+            S_HEAVY,
+            RC,
+            SRC,
+            CFT,
+            CB,
+            OTHERS,
+            CREATE_AT,
+            UPDATE_AT,
+            DELETE_FLAG
+        )
+        FROM STRUCTURE
+    </select>
+
+    <!--  一件検索  -->
+    <select id="findById" parameterType="int" resultMap="structureMap">
+        SELECT (
+            BUILDING_ID,
+            W,
+            AL,
+            S_LIGHT,
+            S_HEAVY,
+            RC,
+            SRC,
+            CFT,
+            CB,
+            OTHERS,
+            CREATE_AT,
+            UPDATE_AT,
+            DELETE_FLAG
+        )
+        FROM STRUCTURE
+        WHERE
+            BUILDING_ID=#{id} AND
+            DELETE_FLAG=0
+    </select>
+
+    <select id="find" resultMap="structureMap">
+        SELECT (
+        BUILDING_ID,
+        W,
+        AL,
+        S_LIGHT,
+        S_HEAVY,
+        RC,
+        SRC,
+        CFT,
+        CB,
+        OTHERS,
+        CREATE_AT,
+        UPDATE_AT,
+        DELETE_FLAG
+        )
+        FROM STRUCTURE
+        <where>
+            <if test="buildingID != null">BUILDING_ID=#{buildingID} AND</if>
+            <if test="w != null">W=#{w} AND</if>
+            <if test="al != null">AL=#{al} AND</if>
+            <if test="sLight != null">S_LIGHT=#{sLight} AND</if>
+            <if test="sHeavy != null">S_HEAVY=#{sHeavy} AND</if>
+            <if test="rc != null">RC=#{rc} AND</if>
+            <if test="src != null">SRC=#{src} AND</if>
+            <if test="cft != null">CFT=#{cft} AND</if>
+            <if test="cb != null">CB=#{cb} AND</if>
+            <if test="others != null">OTHERS LIKE CONCAT('%', #{others}, '%') AND</if>
+            DELETE_FLAG=0
+        </where>
+    </select>
+
+    <!--  データ追加  -->
+    <insert id="add">
+        INSERT INTO STRUCTURE(
+            W,
+            AL,
+            S_LIGHT,
+            S_HEAVY,
+            RC,
+            SRC,
+            CFT,
+            CB,
+            OTHERS,
+            CREATE_AT,
+            UPDATE_AT,
+            DELETE_FLAG
+        )
+        VALUES (
+            #{w},
+            #{al},
+            #{sLight},
+            #{sHeavy},
+            #{rc},
+            #{src},
+            #{cft},
+            #{cb},
+            #{others},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+            0
+        )
+    </insert>
+
+    <!--  データ更新  -->
+    <update id="set">
+        UPDATE STRUCTURE
+        <set>
+            <if test="w != null">W=#{w},</if>
+            <if test="al != null">AL=#{al},</if>
+            <if test="sLight != null">S_LIGHT=#{sLight},</if>
+            <if test="sHeavy != null">S_HEAVY=#{sHeavy},</if>
+            <if test="rc != null">RC=#{rc},</if>
+            <if test="src != null">SRC=#{src},</if>
+            <if test="cft != null">CFT=#{cft},</if>
+            <if test="cb != null">CB=#{cb},</if>
+            <if test="others != null">OTHERS=#{others},</if>
+            UPDATE_AT=CURRENT_TIMESTAMP
+        </set>
+        <where>
+            BUILDING_ID=#{buildingID}
+        </where>
+    </update>
+
+    <!--  論理削除  -->
+    <update id="remove" parameterType="int">
+        UPDATE STRUCTURE
+        <set>
+            DELETE_FLAG=1 AND
+            UPDATE_AT=CURRENT_TIMESTAMP
+        </set>
+        <where>
+            BUILDING_ID=#{id}
+        </where>
+    </update>
+</mapper>
