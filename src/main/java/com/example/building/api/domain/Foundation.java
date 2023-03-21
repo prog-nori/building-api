@@ -1,7 +1,13 @@
 package com.example.building.api.domain;
 
 import java.sql.Timestamp;
+import lombok.Data;
 
+/**
+ * foundationテーブルのデータを表現するためのdomain
+ * 基礎工法
+ */
+@Data
 public class Foundation {
     /**
      * ビルID（識別子）

@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import lombok.Data;
 
+/**
+ * ビルデータを読み込む際に使用するdomain
+ */
 @Data
 public class Building {
     /**
