@@ -23,60 +23,60 @@ public class Structure {
     private int buildingID;
 
     /**
-     * 直接基礎
+     * 木造
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int directFoundation;
+    private int w;
 
     /**
-     * 布基礎
+     * アルミ造
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int clothFoundation;
+    private int al;
 
     /**
-     * 独自基礎
+     * 軽量鉄骨造
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int originalFoundation;
+    private int sLight;
 
     /**
-     * ベタ基礎
+     * 重量鉄骨造
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int solidFoundation;
+    private int sHeavy;
 
     /**
-     * 杭基礎
+     * 鉄筋コンクリート造（RC造）
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int pileFoundation;
+    private int rc;
 
     /**
-     * 支持杭
+     * 鉄骨鉄筋コンクリート造（SRC造）
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int supportPile;
+    private int src;
 
     /**
-     * 摩擦杭
+     * コンクリート充填鋼管構造（CFT造）
      * 0...該当しない
      * 1...該当
-     * 2...該当（併用）
      */
-    private int frictionPile;
+    private int cft;
+
+    /**
+     * コンクリートブロック造（CB造）
+     * 0...該当しない
+     * 1...該当
+     */
+    private int cb;
 
     /**
      * その他（自由記述）
